@@ -1,0 +1,20 @@
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { StoreValidator } from 'App/Validators/Auth/StoreValidator'
+
+export default class AuthController {
+
+  public async store({request, auth}: HttpContextContract) {
+    const {email, password} = await request.validate(StoreValidator)
+
+    const token = await auth.attempt(email, password, { // tentativa de login
+      expiresIn: '30 days'
+    })
+
+    return token
+
+  } //login
+
+  public async destroy({auth}: HttpContextContract) {
+    await auth.logout()
+  } // logout
+}

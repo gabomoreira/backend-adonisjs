@@ -1,0 +1,8 @@
+{
+    "title": "Introduçao ao adonis",
+    "content": "lorem ipsum...",
+    "author": {
+        "name": "Gabo Moreira",
+        "email": "gabo@gmail.com"
+    }
+}
